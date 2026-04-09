@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /area-dentista/
 
-Sitemap: https://www.radixradiologia.com.br/sitemap.xml
+Sitemap: https://radixradiologia.com.br/sitemap.xml

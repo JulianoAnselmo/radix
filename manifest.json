@@ -1,20 +1,56 @@
 {
-  "name": "Radix Radiologia Odontol\u00f3gica",
+  "name": "Radix Radiologia Odontológica",
   "short_name": "Radix",
-  "description": "Radiologia odontol\u00f3gica com tecnologia digital de alta precis\u00e3o em Taquaritinga SP.",
+  "description": "Radiologia odontológica com tecnologia digital de alta precisão em Taquaritinga SP. Radiografia, tomografia e escaneamento 3D.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#FAF5FF",
   "theme_color": "#7C3AED",
   "orientation": "portrait-primary",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "categories": ["health", "medical"],
   "icons": [
+    {
+      "src": "Logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
     {
       "src": "Logo.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
+    },
+    {
+      "src": "Logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "Logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
-  "lang": "pt-BR",
-  "categories": ["health", "medical"]
+  "shortcuts": [
+    {
+      "name": "Agendar exame",
+      "short_name": "Agendar",
+      "description": "Falar pelo WhatsApp para agendar",
+      "url": "https://wa.me/551632523233?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20um%20exame.",
+      "icons": [{ "src": "Logo.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Área do Dentista",
+      "short_name": "Dentista",
+      "description": "Acesso para profissionais",
+      "url": "/area-dentista/index.html",
+      "icons": [{ "src": "Logo.png", "sizes": "192x192" }]
+    }
+  ]
 }

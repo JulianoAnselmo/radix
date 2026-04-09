@@ -12,7 +12,7 @@
     <meta name="author" content="Radix Radiologia Odontol&oacute;gica">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow">
-    <link rel="canonical" href="https://www.radixradiologia.com.br/">
+    <link rel="canonical" href="https://radixradiologia.com.br/">
     <meta name="geo.region" content="BR-SP">
     <meta name="geo.placename" content="Taquaritinga">
     <meta name="geo.position" content="-21.4069;-48.5094">
@@ -23,9 +23,9 @@
     <meta property="og:description" content="Exames de imagem odontol&oacute;gicos com tecnologia digital de alta precis&atilde;o. Radiografia, tomografia e escaneamento 3D em Taquaritinga.">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="pt_BR">
-    <meta property="og:url" content="https://www.radixradiologia.com.br/">
+    <meta property="og:url" content="https://radixradiologia.com.br/">
     <meta property="og:site_name" content="Radix Radiologia Odontol&oacute;gica">
-    <meta property="og:image" content="https://www.radixradiologia.com.br/Logo.png">
+    <meta property="og:image" content="https://radixradiologia.com.br/Logo.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Radix Radiologia Odontol&oacute;gica - Tecnologia e precis&atilde;o em Taquaritinga SP">
@@ -34,7 +34,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Radix Radiologia Odontol&oacute;gica | Taquaritinga SP">
     <meta name="twitter:description" content="Radiografia digital, tomografia e escaneamento intraoral 3D com tecnologia de ponta.">
-    <meta name="twitter:image" content="https://www.radixradiologia.com.br/Logo.png">
+    <meta name="twitter:image" content="https://radixradiologia.com.br/Logo.png">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -252,24 +252,6 @@ p{color:var(--g6)}
 .sobre-stat:hover{transform:translateY(-4px);box-shadow:var(--sh-md)}
 .s-num{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.6rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .s-label{font-size:.73rem;color:var(--g5);margin-top:4px;font-weight:500;text-transform:uppercase;letter-spacing:1px}
-
-/* ===== EXAMES (Glassmorphism) ===== */
-.exames-grid{display:grid;gap:24px}
-@media(min-width:640px){.exames-grid{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:1024px){.exames-grid{grid-template-columns:repeat(3,1fr)}}
-.ex-card{background:rgba(255,255,255,.7);backdrop-filter:blur(12px);border-radius:var(--rl);padding:36px 28px;border:1px solid rgba(124,58,237,.06);transition:all .4s var(--ease);position:relative;overflow:hidden}
-.ex-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
-.ex-card::after{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent 0%,rgba(124,58,237,.03) 25%,transparent 50%);opacity:0;transition:opacity .5s;animation:cardGlow 8s linear infinite paused}
-.ex-card:hover{transform:translateY(-8px);box-shadow:var(--sh-lg);border-color:rgba(124,58,237,.12)}
-.ex-card:hover::before{transform:scaleX(1)}
-.ex-card:hover::after{opacity:1;animation-play-state:running}
-@keyframes cardGlow{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
-.ex-icon{width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,var(--p0),rgba(6,182,212,.06));display:flex;align-items:center;justify-content:center;margin-bottom:22px;transition:all .4s var(--ease)}
-.ex-card:hover .ex-icon{background:var(--grad);transform:scale(1.05);box-shadow:0 4px 20px rgba(124,58,237,.25)}
-.ex-icon svg{width:24px;height:24px;color:var(--p7);transition:color .4s}
-.ex-card:hover .ex-icon svg{color:#fff}
-.ex-card h3{margin-bottom:10px;font-size:1.1rem}
-.ex-card p{font-size:.9rem;line-height:1.7}
 
 /* ===== EXAMES DETALHADOS ===== */
 .exam-detail{display:grid;gap:32px;align-items:center;margin-bottom:56px}
@@ -516,6 +498,25 @@ p{color:var(--g6)}
 .shimmer{position:relative;overflow:hidden}
 .shimmer::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent);animation:shimmerPass 5s ease-in-out infinite}
 @keyframes shimmerPass{0%,100%{left:-100%}50%{left:150%}}
+
+/* ===== COOKIE BANNER (LGPD) ===== */
+.ck-banner{position:fixed;left:16px;right:16px;bottom:16px;z-index:9997;background:#fff;border-radius:18px;box-shadow:0 12px 48px rgba(0,0,0,.18);border:1px solid rgba(124,58,237,.12);padding:22px 24px;display:none;flex-direction:column;gap:16px;max-width:520px;animation:ckSlideUp .4s var(--ease) both}
+@media(min-width:640px){.ck-banner{left:auto;right:24px;bottom:24px;padding:24px 28px}}
+.ck-banner.on{display:flex}
+@keyframes ckSlideUp{0%{opacity:0;transform:translateY(20px)}100%{opacity:1;transform:translateY(0)}}
+.ck-banner-head{display:flex;align-items:center;gap:12px}
+.ck-banner-icon{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--p0),rgba(6,182,212,.08));display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ck-banner-icon svg{width:20px;height:20px;color:var(--p7)}
+.ck-banner h4{font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;font-weight:700;color:#1F2937;margin:0;line-height:1.3}
+.ck-banner p{font-size:.85rem;color:var(--g6);line-height:1.6;margin:0}
+.ck-banner p a{color:var(--p7);font-weight:600;text-decoration:underline}
+.ck-banner p a:hover{color:var(--p9)}
+.ck-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+.ck-btn{flex:1 1 auto;padding:11px 18px;border-radius:30px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:.82rem;border:none;cursor:pointer;transition:all .25s var(--ease);white-space:nowrap}
+.ck-btn-accept{background:var(--p7);color:#fff;box-shadow:0 4px 14px rgba(124,58,237,.25)}
+.ck-btn-accept:hover{background:var(--p6);transform:translateY(-2px);box-shadow:0 6px 18px rgba(124,58,237,.35)}
+.ck-btn-reject{background:#F3F4F6;color:var(--g7);border:1px solid #E5E7EB}
+.ck-btn-reject:hover{background:#E5E7EB}
 
 /* ===== REDUCED MOTION ===== */
 @media(prefers-reduced-motion:reduce){
@@ -1054,7 +1055,7 @@ p{color:var(--g6)}
             <div>
                 <h4 class="ft-title">Links</h4>
                 <div class="ft-links">
-                    <a href="#inicio">In&iacute;cio</a><a href="#sobre">Sobre</a><a href="#exames">Exames</a><a href="#diferenciais">Diferenciais</a><a href="#tecnologia">Tecnologia</a><a href="#contato">Contato</a><a href="area-dentista/index.html">&Aacute;rea do Dentista</a>
+                    <a href="#inicio">In&iacute;cio</a><a href="#sobre">Sobre</a><a href="#exames">Exames</a><a href="#diferenciais">Diferenciais</a><a href="#tecnologia">Tecnologia</a><a href="#contato">Contato</a><a href="area-dentista/index.html">&Aacute;rea do Dentista</a><a href="politica-privacidade.html">Pol&iacute;tica de Privacidade</a>
                 </div>
             </div>
             <div>
@@ -1070,8 +1071,9 @@ p{color:var(--g6)}
             <p>&copy; 2026 Radix Radiologia Odontol&oacute;gica. Todos os direitos reservados.</p>
             <p class="footer-dev"><a href="https://julianoanselmo.github.io/portifolio/" target="_blank" rel="noopener">Desenvolvido por Juliano Anselmo</a></p>
             <div class="ft-social">
-                <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-                <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+                <a href="https://www.instagram.com/radixtaqua/" target="_blank" rel="noopener" aria-label="Instagram da Radix"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                <a href="https://www.facebook.com/Radixtaquaritinga/" target="_blank" rel="noopener" aria-label="Facebook da Radix"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+                <a href="https://share.google/LmcCicm81DKJE3XwU" target="_blank" rel="noopener" aria-label="Radix no Google"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M21.17 8H12V12.5"/><path d="M3.95 6.06L8 10"/><path d="M10.88 21.94L13 16"/></svg></a>
             </div>
         </div>
     </div>
@@ -1081,6 +1083,38 @@ p{color:var(--g6)}
 <a href="https://wa.me/551632523233?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20um%20exame." class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
+
+<!-- COOKIE BANNER LGPD -->
+<div class="ck-banner" id="ck-banner" role="dialog" aria-labelledby="ck-title" aria-describedby="ck-desc">
+    <div class="ck-banner-head">
+        <div class="ck-banner-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.54 15H17a2 2 0 00-2 2v4.54"/><path d="M7 3.34V5a3 3 0 003 3"/><path d="M11 21.95V18a2 2 0 00-2-2H2.05"/><path d="M21.54 15a8 8 0 11-1.5-9.32"/><circle cx="12" cy="12" r="1"/></svg>
+        </div>
+        <h4 id="ck-title">Cookies e privacidade</h4>
+    </div>
+    <p id="ck-desc">Usamos cookies essenciais para o funcionamento do site e cookies analíticos opcionais para melhorar sua experiência. Veja nossa <a href="politica-privacidade.html">Política de Privacidade</a>.</p>
+    <div class="ck-actions">
+        <button class="ck-btn ck-btn-reject" id="ck-reject" type="button">Rejeitar opcionais</button>
+        <button class="ck-btn ck-btn-accept" id="ck-accept" type="button">Aceitar todos</button>
+    </div>
+</div>
+
+<script>
+// ===== Cookie Banner LGPD =====
+(function(){
+    const KEY='radix_consent_v1';
+    const banner=document.getElementById('ck-banner');
+    const accept=document.getElementById('ck-accept');
+    const reject=document.getElementById('ck-reject');
+    if(!banner||!accept||!reject)return;
+    let saved=null;
+    try{saved=localStorage.getItem(KEY)}catch(e){}
+    if(!saved){setTimeout(()=>banner.classList.add('on'),1200)}
+    function save(value){try{localStorage.setItem(KEY,JSON.stringify({value,ts:Date.now()}))}catch(e){}banner.classList.remove('on')}
+    accept.addEventListener('click',()=>save('accepted'));
+    reject.addEventListener('click',()=>save('rejected'));
+})();
+</script>
 
 <script>
 // Header scroll
@@ -1135,14 +1169,14 @@ window.addEventListener('scroll',()=>{const y=scrollY;document.querySelectorAll(
 {
   "@context": "https://schema.org",
   "@type": ["Dentist", "MedicalBusiness"],
-  "@id": "https://www.radixradiologia.com.br/#organization",
+  "@id": "https://radixradiologia.com.br/#organization",
   "name": "Radix Radiologia Odontol\u00f3gica",
   "alternateName": "Radix Digital Radiologia Odontol\u00f3gica",
   "description": "Cl\u00ednica de radiologia odontol\u00f3gica com tecnologia digital de alta precis\u00e3o em Taquaritinga SP. Radiografia digital, tomografia computadorizada, escaneamento intraoral 3D e documenta\u00e7\u00e3o ortod\u00f4ntica.",
-  "url": "https://www.radixradiologia.com.br/",
+  "url": "https://radixradiologia.com.br/",
   "telephone": "+55-16-3252-3233",
-  "image": "https://www.radixradiologia.com.br/Logo.png",
-  "logo": "https://www.radixradiologia.com.br/Logo.png",
+  "image": "https://radixradiologia.com.br/Logo.png",
+  "logo": "https://radixradiologia.com.br/Logo.png",
   "priceRange": "$$",
   "currenciesAccepted": "BRL",
   "paymentAccepted": "Dinheiro, Cart\u00e3o de Cr\u00e9dito, Cart\u00e3o de D\u00e9bito, PIX",
@@ -1188,7 +1222,11 @@ window.addEventListener('scroll',()=>{const y=scrollY;document.querySelectorAll(
     "geoMidpoint": {"@type": "GeoCoordinates", "latitude": "-21.4069", "longitude": "-48.5094"},
     "geoRadius": "50000"
   },
-  "sameAs": []
+  "sameAs": [
+    "https://www.instagram.com/radixtaqua/",
+    "https://www.facebook.com/Radixtaquaritinga/",
+    "https://share.google/LmcCicm81DKJE3XwU"
+  ]
 }
 </script>
 
@@ -1198,9 +1236,9 @@ window.addEventListener('scroll',()=>{const y=scrollY;document.querySelectorAll(
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    {"@type": "ListItem", "position": 1, "name": "In\u00edcio", "item": "https://www.radixradiologia.com.br/"},
-    {"@type": "ListItem", "position": 2, "name": "Exames", "item": "https://www.radixradiologia.com.br/#exames"},
-    {"@type": "ListItem", "position": 3, "name": "Contato", "item": "https://www.radixradiologia.com.br/#contato"}
+    {"@type": "ListItem", "position": 1, "name": "In\u00edcio", "item": "https://radixradiologia.com.br/"},
+    {"@type": "ListItem", "position": 2, "name": "Exames", "item": "https://radixradiologia.com.br/#exames"},
+    {"@type": "ListItem", "position": 3, "name": "Contato", "item": "https://radixradiologia.com.br/#contato"}
   ]
 }
 </script>

@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <!-- SEO Principal -->
-    <title>Radix Radiologia Odontol&oacute;gica | Taquaritinga SP - Radiografia, Tomografia e Escaneamento 3D</title>
-    <meta name="description" content="Radix Radiologia Odontol&oacute;gica em Taquaritinga SP. Radiografia digital panor&acirc;mica e periapical, tomografia computadorizada, escaneamento intraoral 3D e documenta&ccedil;&atilde;o ortod&ocirc;ntica. Tecnologia de ponta com menor dose de radia&ccedil;&atilde;o. Ligue (16) 3252-3233.">
-    <meta name="keywords" content="radiologia odontol&oacute;gica Taquaritinga, radiografia panor&acirc;mica Taquaritinga, tomografia odontol&oacute;gica Taquaritinga SP, escaneamento intraoral 3D Taquaritinga, documenta&ccedil;&atilde;o ortod&ocirc;ntica Taquaritinga, radiografia digital Taquaritinga, cl&iacute;nica radiologia Taquaritinga SP, raio x odontol&oacute;gico Taquaritinga">
+    <title>Radiologia Odontol&oacute;gica em Taquaritinga SP | Tomografia 3D e Radiografia Digital - Radix</title>
+    <meta name="description" content="Cl&iacute;nica de radiologia odontol&oacute;gica em Taquaritinga SP. Radiografia panor&acirc;mica, periapical, tomografia computadorizada Cone Beam Orthophos SL 3D, escaneamento intraoral e documenta&ccedil;&atilde;o ortod&ocirc;ntica 100% digital. Atendimento r&aacute;pido. Ligue (16) 3252-3233.">
+    <meta name="keywords" content="radiologia odontol&oacute;gica Taquaritinga, radiografia panor&acirc;mica Taquaritinga, tomografia odontol&oacute;gica Taquaritinga SP, escaneamento intraoral 3D Taquaritinga, documenta&ccedil;&atilde;o ortod&ocirc;ntica Taquaritinga, radiografia digital Taquaritinga, cl&iacute;nica radiologia Taquaritinga SP, raio x odontol&oacute;gico Taquaritinga, cone beam Taquaritinga, periapical Taquaritinga">
     <meta name="author" content="Radix Radiologia Odontol&oacute;gica">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow">
@@ -199,6 +199,8 @@ p{color:var(--g6)}
 .hero h1{margin-bottom:28px;animation:fadeUp .8s var(--ease) both;animation-delay:.4s}
 .hero h1 em{font-style:normal;position:relative;display:inline-block}
 .hero h1 em::after{content:'';position:absolute;bottom:4px;left:0;width:100%;height:8px;background:linear-gradient(90deg,var(--t4),var(--p4));opacity:.25;border-radius:4px;z-index:-1}
+.hero-tagline{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(1.15rem,2.5vw,1.4rem);font-weight:700;color:var(--p7);margin-bottom:14px;max-width:540px;line-height:1.4;animation:fadeUp .8s var(--ease) both;animation-delay:.5s}
+.hero-tagline strong{font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero-sub{font-size:clamp(1.05rem,2.5vw,1.25rem);color:var(--g5);margin-bottom:44px;max-width:520px;line-height:1.85;animation:fadeUp .8s var(--ease) both;animation-delay:.6s}
 .hero-ctas{display:flex;flex-wrap:wrap;gap:16px;animation:fadeUp .8s var(--ease) both;animation-delay:.8s}
 .hero-stats{display:flex;flex-wrap:wrap;gap:20px 28px;margin-top:48px;animation:fadeUp .8s var(--ease) both;animation-delay:1s}
@@ -499,6 +501,30 @@ p{color:var(--g6)}
 .shimmer::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent);animation:shimmerPass 5s ease-in-out infinite}
 @keyframes shimmerPass{0%,100%{left:-100%}50%{left:150%}}
 
+/* ===== FAQ ===== */
+.faq{background:linear-gradient(180deg,var(--p0),#fff)}
+.faq-list{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.faq-item{background:#fff;border:1.5px solid var(--g1);border-radius:var(--r);overflow:hidden;transition:all .35s var(--ease)}
+.faq-item:hover{border-color:rgba(124,58,237,.18);box-shadow:var(--sh-md)}
+.faq-item[open]{border-color:rgba(124,58,237,.25);box-shadow:var(--sh-md);background:linear-gradient(135deg,#fff,var(--p0))}
+.faq-item summary{padding:22px 26px;cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:18px;font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;font-weight:700;color:#1F2937;line-height:1.4;transition:color .25s}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary:hover{color:var(--p7)}
+@media(max-width:640px){.faq-item summary{padding:18px 20px;font-size:.95rem;gap:14px}}
+.faq-icon{width:32px;height:32px;border-radius:50%;background:rgba(124,58,237,.08);border:1.5px solid rgba(124,58,237,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .35s var(--ease)}
+.faq-icon svg{width:14px;height:14px;color:var(--p7);transition:transform .35s var(--ease)}
+.faq-item[open] .faq-icon{background:var(--p7);border-color:var(--p7)}
+.faq-item[open] .faq-icon svg{color:#fff;transform:rotate(180deg)}
+.faq-answer{padding:0 26px 24px;color:var(--g6);font-size:.95rem;line-height:1.75;animation:faqFade .3s var(--ease)}
+@media(max-width:640px){.faq-answer{padding:0 20px 20px;font-size:.92rem}}
+@keyframes faqFade{0%{opacity:0;transform:translateY(-6px)}100%{opacity:1;transform:translateY(0)}}
+.faq-answer p{margin-bottom:10px;color:var(--g6)}
+.faq-answer p:last-child{margin-bottom:0}
+.faq-answer strong{color:var(--g7)}
+.faq-cta{margin-top:48px;text-align:center;padding:32px 28px;background:linear-gradient(135deg,#fff,var(--p0));border:1px solid rgba(124,58,237,.12);border-radius:var(--rl);max-width:680px;margin-left:auto;margin-right:auto}
+.faq-cta h3{font-size:1.15rem;margin-bottom:8px;color:#1F2937}
+.faq-cta p{font-size:.92rem;color:var(--g5);margin-bottom:18px}
+
 /* ===== COOKIE BANNER (LGPD) ===== */
 .ck-banner{position:fixed;left:16px;right:16px;bottom:16px;z-index:9997;background:#fff;border-radius:18px;box-shadow:0 12px 48px rgba(0,0,0,.18);border:1px solid rgba(124,58,237,.12);padding:22px 24px;display:none;flex-direction:column;gap:16px;max-width:520px;animation:ckSlideUp .4s var(--ease) both}
 @media(min-width:640px){.ck-banner{left:auto;right:24px;bottom:24px;padding:24px 28px}}
@@ -532,13 +558,14 @@ p{color:var(--g6)}
 <!-- HEADER -->
 <header class="header" id="header">
     <div class="container header-inner">
-        <a href="#inicio"><img src="Logo.png" alt="Radix Radiologia Odontol&oacute;gica" class="header-logo"></a>
+        <a href="#inicio" aria-label="Radix Radiologia Odontol&oacute;gica - P&aacute;gina inicial"><img src="Logo.png" alt="Logo Radix Radiologia Odontol&oacute;gica" class="header-logo" width="240" height="56" fetchpriority="high"></a>
         <nav class="nav">
             <a href="#inicio">In&iacute;cio</a>
             <a href="#sobre">Sobre</a>
             <a href="#exames">Exames</a>
             <a href="#diferenciais">Diferenciais</a>
             <a href="#tecnologia">Tecnologia</a>
+            <a href="#faq">FAQ</a>
             <a href="#contato">Contato</a>
         </nav>
         <a href="https://wa.me/551632523233?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20um%20exame." class="btn btn-primary h-cta" target="_blank" rel="noopener">
@@ -560,6 +587,7 @@ p{color:var(--g6)}
     <a href="#exames">Exames</a>
     <a href="#diferenciais">Diferenciais</a>
     <a href="#tecnologia">Tecnologia</a>
+    <a href="#faq">FAQ</a>
     <a href="#contato">Contato</a>
     <a href="area-dentista/index.html" class="nav-cta">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
@@ -591,7 +619,8 @@ p{color:var(--g6)}
         <div class="hero-inner">
             <div class="hero-content">
                 <span class="section-label">Radiologia Odontol&oacute;gica Digital</span>
-                <h1>Tecnologia e <em class="grad-text">precis&atilde;o</em> para diagn&oacute;sticos mais seguros</h1>
+                <h1>Cl&iacute;nica de Radiologia Odontol&oacute;gica em <em class="grad-text">Taquaritinga</em></h1>
+                <p class="hero-tagline"><strong>Tecnologia e precis&atilde;o</strong> para diagn&oacute;sticos mais seguros.</p>
                 <p class="hero-sub">Exames de imagem odontol&oacute;gicos com alta defini&ccedil;&atilde;o digital, agilidade e menor exposi&ccedil;&atilde;o &agrave; radia&ccedil;&atilde;o em Taquaritinga e regi&atilde;o.</p>
                 <div class="hero-ctas">
                     <a href="https://wa.me/551632523233?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20um%20exame." class="btn btn-wa" target="_blank" rel="noopener">
@@ -678,7 +707,7 @@ p{color:var(--g6)}
         <!-- 1. RADIOGRAFIA PANORÂMICA -->
         <div class="exam-detail anim">
             <div class="exam-detail-img">
-                <img src="radiografia-panoramica.jpg" alt="Radiografia Panor&acirc;mica" loading="lazy">
+                <img src="radiografia-panoramica.jpg" alt="Radiografia panor&acirc;mica odontol&oacute;gica digital realizada na Radix Radiologia em Taquaritinga SP" loading="lazy">
             </div>
             <div class="exam-detail-content">
                 <span class="exam-tag">Exame extraoral</span>
@@ -696,7 +725,7 @@ p{color:var(--g6)}
         <!-- 2. PERIAPICAL BOCA TODA -->
         <div class="exam-detail reverse anim">
             <div class="exam-detail-img">
-                <img src="PERIAPICAL.PNG" alt="Levantamento Periapical Boca Toda" loading="lazy">
+                <img src="PERIAPICAL.PNG" alt="Levantamento periapical completo com 14 radiografias intraorais digitais boca toda - Radix Taquaritinga" loading="lazy">
             </div>
             <div class="exam-detail-content">
                 <span class="exam-tag">Exame intraoral</span>
@@ -722,8 +751,8 @@ p{color:var(--g6)}
         <!-- 3. TOMOGRAFIA CONE BEAM -->
         <div class="exam-detail anim">
             <div class="exam-detail-imgs">
-                <img src="TOMOGRAFIA.jpg" alt="Equipamento Orthophos SL 3D Sirona" loading="lazy">
-                <img src="TOMOGRAFIA-RESULTADOS.jpg" alt="Resultados de Tomografia 3D" loading="lazy">
+                <img src="TOMOGRAFIA.jpg" alt="Tom&oacute;grafo computadorizado Cone Beam Orthophos SL 3D Dentsply Sirona usado para tomografia odontol&oacute;gica em Taquaritinga" loading="lazy">
+                <img src="TOMOGRAFIA-RESULTADOS.jpg" alt="Imagem tridimensional 3D de tomografia computadorizada Cone Beam mostrando estruturas maxilofaciais detalhadas" loading="lazy">
             </div>
             <div class="exam-detail-content">
                 <span class="exam-tag">Tecnologia Dentsply Sirona</span>
@@ -774,7 +803,7 @@ p{color:var(--g6)}
         <!-- 4. ESCANEAMENTO INTRAORAL -->
         <div class="exam-detail reverse anim">
             <div class="exam-detail-img">
-                <img src="intraoral.jpg" alt="Escaneamento Intraoral Digital" loading="lazy">
+                <img src="intraoral.jpg" alt="Escaneamento intraoral 3D digital realizado com scanner odontol&oacute;gico de alta precis&atilde;o - Radix Radiologia Taquaritinga" loading="lazy">
             </div>
             <div class="exam-detail-content">
                 <span class="exam-tag">Tecnologia 3D digital</span>
@@ -1010,6 +1039,161 @@ p{color:var(--g6)}
     </div>
 </section>
 
+<!-- ===== FAQ ===== -->
+<section class="faq section" id="faq">
+    <div class="container">
+        <div class="section-header anim">
+            <span class="section-label">Perguntas Frequentes</span>
+            <div class="grad-line grad-line-c"></div>
+            <h2 class="section-title">Tire suas <span class="grad-text">d&uacute;vidas</span></h2>
+            <p class="section-sub">Respostas para as perguntas mais comuns sobre nossos exames de imagem odontol&oacute;gica.</p>
+        </div>
+
+        <div class="faq-list">
+            <details class="faq-item anim">
+                <summary>
+                    Qual a diferen&ccedil;a entre tomografia e radiografia odontol&oacute;gica?
+                    <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>A <strong>tomografia computadorizada Cone Beam</strong> gera imagens tridimensionais (3D) das estruturas maxilofaciais com detalhamento superior, ideal para planejamento de implantes, cirurgias e an&aacute;lise de canais.</p>
+                    <p>A <strong>radiografia</strong> produz imagens bidimensionais (2D), mais r&aacute;pida e indicada para diagn&oacute;sticos de rotina, como les&otilde;es cariosas e acompanhamento ortod&ocirc;ntico.</p>
+                </div>
+            </details>
+
+            <details class="faq-item anim">
+                <summary>
+                    O que &eacute; escaneamento intraoral 3D?
+                    <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>O escaneamento intraoral 3D &eacute; um exame digital que substitui o molde convencional com massa por uma captura digital precisa das arcadas dent&aacute;rias, gerando arquivos no formato STL.</p>
+                    <p>&Eacute; mais confort&aacute;vel ao paciente, elimina n&aacute;useas, permite simula&ccedil;&atilde;o pr&eacute;via dos resultados e &eacute; ideal para pr&oacute;teses, alinhadores invis&iacute;veis, ortodontia e guias cir&uacute;rgicas.</p>
+                </div>
+            </details>
+
+            <details class="faq-item anim">
+                <summary>
+                    Quanto tempo demora para ficar pronto o exame?
+                    <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Como a Radix utiliza tecnologia <strong>100% digital</strong>, a maioria dos exames fica pronta no mesmo dia.</p>
+                    <p>Radiografias panor&acirc;micas e periapicais s&atilde;o disponibilizadas em poucos minutos ap&oacute;s a captura. Tomografias computadorizadas Cone Beam podem ser entregues no mesmo dia ou em at&eacute; 24 horas, dependendo da complexidade do laudo.</p>
+                </div>
+            </details>
+
+            <details class="faq-item anim">
+                <summary>
+                    Como recebo os resultados dos exames?
+                    <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Todos os exames s&atilde;o entregues em <strong>formato digital</strong>. O paciente pode receber por WhatsApp, e-mail ou pen drive.</p>
+                    <p>O dentista solicitante tamb&eacute;m pode acessar diretamente os resultados pela <a href="area-dentista/index.html" style="color:var(--p7);font-weight:600">&Aacute;rea do Dentista</a> no nosso site, com login pr&oacute;prio. Documenta&ccedil;&atilde;o ortod&ocirc;ntica e arquivos STL do escaneamento intraoral tamb&eacute;m s&atilde;o disponibilizados digitalmente.</p>
+                </div>
+            </details>
+
+            <details class="faq-item anim">
+                <summary>
+                    Preciso de pedido odontol&oacute;gico para realizar o exame?
+                    <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Para a maioria dos exames &eacute; recomendado o pedido do cirurgi&atilde;o-dentista, j&aacute; que o profissional indica o exame mais adequado e a regi&atilde;o a ser avaliada.</p>
+                    <p>A <strong>radiografia panor&acirc;mica</strong> pode ser realizada sem agendamento pr&eacute;vio. Em caso de d&uacute;vidas, entre em contato pelo (16) 3252-3233.</p>
+                </div>
+            </details>
+
+            <details class="faq-item anim">
+                <summary>
+                    A radiografia panor&acirc;mica odontol&oacute;gica d&oacute;i?
+                    <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>N&atilde;o, a radiografia panor&acirc;mica &eacute; <strong>totalmente indolor</strong> e n&atilde;o invasiva. &Eacute; um exame extraoral, ou seja, o equipamento gira ao redor da cabe&ccedil;a do paciente sem nenhum contato dolorido.</p>
+                    <p>O procedimento dura cerca de 20 segundos e usa baixa dose de radia&ccedil;&atilde;o, sendo seguro para todas as idades.</p>
+                </div>
+            </details>
+
+            <details class="faq-item anim">
+                <summary>
+                    Quanto tempo dura uma tomografia odontol&oacute;gica Cone Beam?
+                    <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>A aquisi&ccedil;&atilde;o da tomografia Cone Beam dura apenas <strong>alguns segundos</strong> com nosso equipamento Orthophos SL 3D da Sirona.</p>
+                    <p>O atendimento completo (acolhimento, posicionamento e exame) leva em torno de 10 a 15 minutos. &Eacute; um exame r&aacute;pido, n&atilde;o invasivo e com baixa exposi&ccedil;&atilde;o &agrave; radia&ccedil;&atilde;o.</p>
+                </div>
+            </details>
+
+            <details class="faq-item anim">
+                <summary>
+                    Crian&ccedil;as podem fazer radiografia ou tomografia odontol&oacute;gica?
+                    <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>Sim. Crian&ccedil;as podem realizar exames odontol&oacute;gicos de imagem com seguran&ccedil;a, desde que indicados pelo cirurgi&atilde;o-dentista.</p>
+                    <p>Para pacientes com <strong>denti&ccedil;&atilde;o dec&iacute;dua</strong> (dentes de leite), o levantamento periapical &eacute; realizado com 10 radiografias (5 superiores + 5 inferiores). Utilizamos protocolos de baixa dose de radia&ccedil;&atilde;o e equipamentos digitais que reduzem ainda mais a exposi&ccedil;&atilde;o.</p>
+                </div>
+            </details>
+
+            <details class="faq-item anim">
+                <summary>
+                    Qual a diferen&ccedil;a entre radiografia periapical e panor&acirc;mica?
+                    <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>A <strong>radiografia periapical</strong> &eacute; intraoral e mostra de 1 a 4 dentes em alta defini&ccedil;&atilde;o, sendo ideal para diagn&oacute;stico de canais, les&otilde;es cariosas e granulomas.</p>
+                    <p>A <strong>panor&acirc;mica</strong> &eacute; extraoral e mostra todas as arcadas, mand&iacute;bula, maxila e ATM em uma &uacute;nica imagem, sendo usada para vis&atilde;o geral, planejamento ortod&ocirc;ntico e identifica&ccedil;&atilde;o de dentes inclusos.</p>
+                </div>
+            </details>
+
+            <details class="faq-item anim">
+                <summary>
+                    A Radix atende aos s&aacute;bados ou domingos?
+                    <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>N&atilde;o, atualmente a Radix Radiologia Odontol&oacute;gica funciona apenas <strong>de segunda a sexta-feira</strong>, das 08h &agrave;s 11h30 e das 13h30 &agrave;s 17h30.</p>
+                    <p>Em casos de urg&ecirc;ncia odontol&oacute;gica, recomendamos contato pelo telefone (16) 3252-3233 ou WhatsApp para verificar disponibilidade.</p>
+                </div>
+            </details>
+
+            <details class="faq-item anim">
+                <summary>
+                    Como funciona a &Aacute;rea do Dentista no site da Radix?
+                    <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>A <a href="area-dentista/index.html" style="color:var(--p7);font-weight:600">&Aacute;rea do Dentista</a> permite que profissionais parceiros acessem diretamente os exames dos seus pacientes. O acesso &eacute; feito por login e senha fornecidos pela Radix.</p>
+                    <p>Pelo painel &eacute; poss&iacute;vel visualizar radiografias, tomografias, escaneamentos e laudos de forma r&aacute;pida e segura, sem necessidade de retirar fisicamente os exames.</p>
+                </div>
+            </details>
+
+            <details class="faq-item anim">
+                <summary>
+                    Onde fica a Radix Radiologia em Taquaritinga?
+                    <span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+                </summary>
+                <div class="faq-answer">
+                    <p>A Radix Radiologia Odontol&oacute;gica est&aacute; localizada na <strong>Pra&ccedil;a Dr. Jos&eacute; Furiatti, 184, Centro &mdash; Taquaritinga/SP</strong>, em uma regi&atilde;o de f&aacute;cil acesso. Atendemos pacientes de Taquaritinga e regi&atilde;o.</p>
+                    <p>Telefone: <a href="tel:+551632523233" style="color:var(--p7);font-weight:600">(16) 3252-3233</a>. Veja como chegar pelo <a href="https://www.google.com/maps/search/Pra%C3%A7a+Dr.+Jos%C3%A9+Furiatti+184+Taquaritinga+SP" target="_blank" rel="noopener" style="color:var(--p7);font-weight:600">Google Maps</a>.</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="faq-cta anim">
+            <h3>Ainda tem d&uacute;vidas?</h3>
+            <p>Fale com a nossa equipe pelo WhatsApp ou telefone. Atendemos com agilidade.</p>
+            <a href="https://wa.me/551632523233?text=Ol%C3%A1%2C%20gostaria%20de%20tirar%20uma%20d%C3%BAvida%20sobre%20um%20exame." class="btn btn-wa" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Falar pelo WhatsApp
+            </a>
+        </div>
+    </div>
+</section>
+
 <!-- ===== CONTATO ===== -->
 <section class="contato section" id="contato">
     <div class="container">
@@ -1049,13 +1233,13 @@ p{color:var(--g6)}
     <div class="container">
         <div class="ft-inner">
             <div class="ft-brand">
-                <img src="Logo.png" alt="Radix Radiologia Odontol&oacute;gica" class="ft-logo">
+                <img src="Logo.png" alt="Radix Radiologia Odontol&oacute;gica - Taquaritinga SP" class="ft-logo" width="240" height="64" loading="lazy">
                 <p>Radiologia odontol&oacute;gica com tecnologia digital de alta precis&atilde;o em Taquaritinga e regi&atilde;o. Exames que fazem diferen&ccedil;a no diagn&oacute;stico.</p>
             </div>
             <div>
                 <h4 class="ft-title">Links</h4>
                 <div class="ft-links">
-                    <a href="#inicio">In&iacute;cio</a><a href="#sobre">Sobre</a><a href="#exames">Exames</a><a href="#diferenciais">Diferenciais</a><a href="#tecnologia">Tecnologia</a><a href="#contato">Contato</a><a href="area-dentista/index.html">&Aacute;rea do Dentista</a><a href="politica-privacidade.html">Pol&iacute;tica de Privacidade</a>
+                    <a href="#inicio">In&iacute;cio</a><a href="#sobre">Sobre</a><a href="#exames">Exames</a><a href="#diferenciais">Diferenciais</a><a href="#tecnologia">Tecnologia</a><a href="#faq">FAQ</a><a href="#contato">Contato</a><a href="area-dentista/index.html">&Aacute;rea do Dentista</a><a href="politica-privacidade.html">Pol&iacute;tica de Privacidade</a>
                 </div>
             </div>
             <div>
@@ -1222,6 +1406,14 @@ window.addEventListener('scroll',()=>{const y=scrollY;document.querySelectorAll(
     "geoMidpoint": {"@type": "GeoCoordinates", "latitude": "-21.4069", "longitude": "-48.5094"},
     "geoRadius": "50000"
   },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "bestRating": "5",
+    "worstRating": "1",
+    "ratingCount": "2",
+    "reviewCount": "2"
+  },
   "sameAs": [
     "https://www.instagram.com/radixtaqua/",
     "https://www.facebook.com/Radixtaquaritinga/",
@@ -1237,8 +1429,12 @@ window.addEventListener('scroll',()=>{const y=scrollY;document.querySelectorAll(
   "@type": "BreadcrumbList",
   "itemListElement": [
     {"@type": "ListItem", "position": 1, "name": "In\u00edcio", "item": "https://radixradiologia.com.br/"},
-    {"@type": "ListItem", "position": 2, "name": "Exames", "item": "https://radixradiologia.com.br/#exames"},
-    {"@type": "ListItem", "position": 3, "name": "Contato", "item": "https://radixradiologia.com.br/#contato"}
+    {"@type": "ListItem", "position": 2, "name": "Sobre", "item": "https://radixradiologia.com.br/#sobre"},
+    {"@type": "ListItem", "position": 3, "name": "Exames", "item": "https://radixradiologia.com.br/#exames"},
+    {"@type": "ListItem", "position": 4, "name": "Diferenciais", "item": "https://radixradiologia.com.br/#diferenciais"},
+    {"@type": "ListItem", "position": 5, "name": "Tecnologia", "item": "https://radixradiologia.com.br/#tecnologia"},
+    {"@type": "ListItem", "position": 6, "name": "FAQ", "item": "https://radixradiologia.com.br/#faq"},
+    {"@type": "ListItem", "position": 7, "name": "Contato", "item": "https://radixradiologia.com.br/#contato"}
   ]
 }
 </script>
@@ -1254,7 +1450,7 @@ window.addEventListener('scroll',()=>{const y=scrollY;document.querySelectorAll(
       "name": "Qual a diferen\u00e7a entre tomografia e radiografia odontol\u00f3gica?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A tomografia gera imagens tridimensionais (3D) com detalhamento superior, ideal para implantes e cirurgias. A radiografia produz imagens bidimensionais (2D), mais r\u00e1pida e indicada para diagn\u00f3sticos de rotina."
+        "text": "A tomografia computadorizada Cone Beam gera imagens tridimensionais (3D) das estruturas maxilofaciais com detalhamento superior, ideal para planejamento de implantes, cirurgias e an\u00e1lise de canais. A radiografia produz imagens bidimensionais (2D), mais r\u00e1pida e indicada para diagn\u00f3sticos de rotina, como les\u00f5es cariosas e acompanhamento ortod\u00f4ntico."
       }
     },
     {
@@ -1262,7 +1458,7 @@ window.addEventListener('scroll',()=>{const y=scrollY;document.querySelectorAll(
       "name": "O que \u00e9 escaneamento intraoral 3D?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "O escaneamento intraoral 3D substitui o molde convencional com massa por uma captura digital precisa e confort\u00e1vel das arcadas dent\u00e1rias, ideal para pr\u00f3teses e ortodontia."
+        "text": "O escaneamento intraoral 3D \u00e9 um exame digital que substitui o molde convencional com massa por uma captura digital precisa das arcadas dent\u00e1rias, gerando arquivos no formato STL. \u00c9 mais confort\u00e1vel ao paciente, elimina n\u00e1useas, permite simula\u00e7\u00e3o pr\u00e9via dos resultados e \u00e9 ideal para pr\u00f3teses, alinhadores invis\u00edveis, ortodontia e guias cir\u00fargicas."
       }
     },
     {
@@ -1270,7 +1466,79 @@ window.addEventListener('scroll',()=>{const y=scrollY;document.querySelectorAll(
       "name": "Qual o hor\u00e1rio de funcionamento da Radix em Taquaritinga?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A Radix funciona de segunda a sexta-feira, das 08h \u00e0s 11h30 e das 13h30 \u00e0s 17h30."
+        "text": "A Radix Radiologia Odontol\u00f3gica funciona de segunda a sexta-feira, das 08h \u00e0s 11h30 e das 13h30 \u00e0s 17h30. Estamos localizados na Pra\u00e7a Dr. Jos\u00e9 Furiatti, 184, Centro \u2014 Taquaritinga/SP. Telefone (16) 3252-3233."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quanto tempo demora para ficar pronto o exame de imagem odontol\u00f3gica?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Como a Radix utiliza tecnologia 100% digital, a maioria dos exames fica pronta no mesmo dia. Radiografias panor\u00e2micas e periapicais s\u00e3o disponibilizadas em poucos minutos ap\u00f3s a captura. Tomografias computadorizadas Cone Beam podem ser entregues no mesmo dia ou em at\u00e9 24 horas, dependendo da complexidade do laudo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Como recebo os resultados dos exames?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Todos os exames s\u00e3o entregues em formato digital. O paciente pode receber por WhatsApp, e-mail ou pen drive. O dentista solicitante tamb\u00e9m pode acessar diretamente os resultados pela \u00c1rea do Dentista no nosso site, com login pr\u00f3prio. Documenta\u00e7\u00e3o ortod\u00f4ntica e arquivos STL do escaneamento intraoral tamb\u00e9m s\u00e3o disponibilizados digitalmente."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Preciso de pedido odontol\u00f3gico para realizar exame na Radix?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Para a maioria dos exames \u00e9 recomendado o pedido do cirurgi\u00e3o-dentista, j\u00e1 que o profissional indica o exame mais adequado e a regi\u00e3o a ser avaliada. A radiografia panor\u00e2mica pode ser realizada sem agendamento pr\u00e9vio. Em caso de d\u00favidas, entre em contato pelo (16) 3252-3233."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "A radiografia panor\u00e2mica odontol\u00f3gica d\u00f3i?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "N\u00e3o, a radiografia panor\u00e2mica \u00e9 totalmente indolor e n\u00e3o invasiva. \u00c9 um exame extraoral, ou seja, o equipamento gira ao redor da cabe\u00e7a do paciente sem nenhum contato dolorido. O procedimento dura cerca de 20 segundos e usa baixa dose de radia\u00e7\u00e3o, sendo seguro para todas as idades."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quanto tempo dura uma tomografia odontol\u00f3gica Cone Beam?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A aquisi\u00e7\u00e3o da tomografia Cone Beam dura apenas alguns segundos com nosso equipamento Orthophos SL 3D da Sirona. O atendimento completo (acolhimento, posicionamento e exame) leva em torno de 10 a 15 minutos. \u00c9 um exame r\u00e1pido, n\u00e3o invasivo e com baixa exposi\u00e7\u00e3o \u00e0 radia\u00e7\u00e3o."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Crian\u00e7as podem fazer radiografia ou tomografia odontol\u00f3gica?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. Crian\u00e7as podem realizar exames odontol\u00f3gicos de imagem com seguran\u00e7a, desde que indicados pelo cirurgi\u00e3o-dentista. Para pacientes com denti\u00e7\u00e3o dec\u00edqua (dentes de leite), o levantamento periapical \u00e9 realizado com 10 radiografias (5 superiores + 5 inferiores). Utilizamos protocolos de baixa dose de radia\u00e7\u00e3o e equipamentos digitais que reduzem ainda mais a exposi\u00e7\u00e3o."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Qual a diferen\u00e7a entre radiografia periapical e panor\u00e2mica?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A radiografia periapical \u00e9 intraoral e mostra de 1 a 4 dentes em alta defini\u00e7\u00e3o, sendo ideal para diagn\u00f3stico de canais, les\u00f5es cariosas e granulomas. A panor\u00e2mica \u00e9 extraoral e mostra todas as arcadas, mand\u00edbula, maxila e ATM em uma \u00fanica imagem, sendo usada para vis\u00e3o geral, planejamento ortod\u00f4ntico e identifica\u00e7\u00e3o de dentes inclusos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "A Radix atende aos s\u00e1bados ou domingos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "N\u00e3o, atualmente a Radix Radiologia Odontol\u00f3gica funciona apenas de segunda a sexta-feira, das 08h \u00e0s 11h30 e das 13h30 \u00e0s 17h30. Em casos de urg\u00eancia odontol\u00f3gica, recomendamos contato pelo telefone (16) 3252-3233 ou WhatsApp para verificar disponibilidade."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Como funciona a \u00c1rea do Dentista no site da Radix?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A \u00c1rea do Dentista permite que profissionais parceiros acessem diretamente os exames dos seus pacientes. O acesso \u00e9 feito por login e senha fornecidos pela Radix. Pelo painel \u00e9 poss\u00edvel visualizar radiografias, tomografias, escaneamentos e laudos de forma r\u00e1pida e segura, sem necessidade de retirar fisicamente os exames."
       }
     }
   ]

@@ -65,4 +65,30 @@
         accept.addEventListener('click', function(){ save('accepted'); });
         reject.addEventListener('click', function(){ save('rejected'); });
     }
+
+    // ============================================================
+    // GoatCounter Analytics (LGPD-friendly, sem cookies)
+    // ============================================================
+    // INSTRUCOES:
+    // 1. Crie conta gratuita em https://www.goatcounter.com/signup
+    // 2. Crie um site (ex: "radixradiologia") - voce ganha um subdominio
+    //    como "radixradiologia.goatcounter.com"
+    // 3. Substitua "RADIXRADIOLOGIA" abaixo pelo seu codigo real
+    // 4. Pronto! Os pageviews comecam a ser registrados automaticamente.
+    //
+    // Caracteristicas:
+    // - Gratuito ate 100k pageviews/mes
+    // - Nao usa cookies (LGPD-friendly)
+    // - Nao precisa de banner de consentimento para analytics
+    // - Dashboard simples mostrando: paginas mais vistas, paises,
+    //   referers, navegadores, dispositivos, periodos
+    // ============================================================
+    var GOATCOUNTER_CODE = 'RADIXRADIOLOGIA'; // <- TROCAR pelo seu codigo
+    if(GOATCOUNTER_CODE && GOATCOUNTER_CODE !== 'RADIXRADIOLOGIA'){
+        var gc = document.createElement('script');
+        gc.dataset.goatcounter = 'https://' + GOATCOUNTER_CODE + '.goatcounter.com/count';
+        gc.async = true;
+        gc.src = '//gc.zgo.at/count.js';
+        document.head.appendChild(gc);
+    }
 })();

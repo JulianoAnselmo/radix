@@ -66,9 +66,14 @@ p{color:var(--g6)}
 /* ===== HEADER ===== */
 .header{position:fixed;top:0;left:0;right:0;z-index:1000;padding:18px 0;transition:all .4s var(--ease)}
 .header.scrolled{background:rgba(255,255,255,.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 1px 16px rgba(124,58,237,.08);padding:8px 0}
-.header-inner{display:flex;align-items:center;gap:24px}
-.header-inner>a:first-child{margin-right:auto}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.header-inner>a:first-child{flex-shrink:0}
+@media(min-width:1024px){
+    .header-inner{justify-content:flex-start;gap:24px}
+    .nav{margin-left:auto}
+}
 @media(min-width:1280px){.header-inner{gap:32px}}
+.header-logo{flex-shrink:0}
 .header-logo{height:56px;width:auto;transition:height .3s var(--ease)}
 .header.scrolled .header-logo{height:44px}
 .nav{display:none;gap:32px}

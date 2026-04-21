@@ -236,18 +236,32 @@
     }
 
     /* ---------- Logo em base64 (carrega 1 vez) ---------- */
+    // Converte o WebP em PNG via canvas (fundo branco) porque passar WebP/JPEG
+    // com transparência para jsPDF resultava em fundo preto no PDF.
     let logoDataUrl = null;
     function loadLogo() {
         if (logoDataUrl) return Promise.resolve(logoDataUrl);
-        return fetch('../assets/img/logo.webp')
-            .then(r => r.blob())
-            .then(b => new Promise((res, rej) => {
-                const fr = new FileReader();
-                fr.onload = () => { logoDataUrl = fr.result; res(logoDataUrl); };
-                fr.onerror = rej;
-                fr.readAsDataURL(b);
-            }))
-            .catch(() => null);
+        return new Promise(resolve => {
+            const img = new Image();
+            img.crossOrigin = 'anonymous';
+            img.onload = () => {
+                try {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = img.naturalWidth || 256;
+                    canvas.height = img.naturalHeight || 256;
+                    const ctx = canvas.getContext('2d');
+                    ctx.fillStyle = '#FFFFFF';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    logoDataUrl = canvas.toDataURL('image/png');
+                    resolve(logoDataUrl);
+                } catch (e) {
+                    resolve(null);
+                }
+            };
+            img.onerror = () => resolve(null);
+            img.src = '../assets/img/logo.webp';
+        });
     }
 
     /* ---------- Geração do PDF ---------- */
@@ -270,7 +284,7 @@
 
         // Cabeçalho
         if (logoDataUrl) {
-            try { doc.addImage(logoDataUrl, 'JPEG', margin, y, 22, 22); } catch (e) {}
+            try { doc.addImage(logoDataUrl, 'PNG', margin, y, 22, 22); } catch (e) {}
         }
         doc.setFont('helvetica', 'bold'); doc.setFontSize(16); setC(ROXO);
         doc.text('RÁDIX', margin + 26, y + 9);

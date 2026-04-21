@@ -427,17 +427,17 @@
         const pac = d.paciente.nome || '';
         const data = new Date().toLocaleDateString('pt-BR');
         const linhas = [
-            '🦷 *Rádix — Solicitação de exame*',
+            '*Rádix — Solicitação de exame*',
             ''
         ];
-        if (pac) linhas.push(`👤 Paciente: *${pac}*`);
-        linhas.push(`🩺 Solicitante: Dr.(a) ${dr}`);
-        linhas.push(`📅 Data: ${data}`);
+        if (pac) linhas.push(`Paciente: *${pac}*`);
+        linhas.push(`Solicitante: Dr.(a) ${dr}`);
+        linhas.push(`Data: ${data}`);
         linhas.push('');
         if (pdfUrl) {
-            linhas.push(`📄 PDF: ${pdfUrl}`);
+            linhas.push(`PDF: ${pdfUrl}`);
         } else {
-            linhas.push('📎 PDF em anexo nesta conversa.');
+            linhas.push('PDF em anexo nesta conversa.');
         }
         return linhas.join('\n');
     }
@@ -548,10 +548,21 @@
             }
         });
 
-        // Envio: gera PDF, tenta subir no Drive, abre WhatsApp com link.
-        // Se o upload falhar, cai no fluxo antigo (baixa local + WhatsApp sem link).
+        // Envio em 2 etapas no mobile: 1) upload, 2) clique real abre WhatsApp.
+        // O segundo clique é um gesto direto do usuário → nunca é bloqueado.
         btnEnv.addEventListener('click', async () => {
             if (btnEnv.disabled) return;
+
+            // Etapa 2: botão já está no modo "Abrir WhatsApp"
+            if (btnEnv.dataset.waUrl) {
+                const url = btnEnv.dataset.waUrl;
+                delete btnEnv.dataset.waUrl;
+                btnEnv.textContent = 'Gerar e enviar';
+                validar();
+                window.open(url, '_blank');
+                return;
+            }
+
             await loadLogo();
             const d = collect(stateIntra, stateTomo);
             let doc;
@@ -570,29 +581,6 @@
             btnEnv.disabled = true;
             btnEnv.textContent = 'Enviando...';
 
-            // Abre a janela de forma síncrona (dentro do evento de clique) para
-            // evitar bloqueio de popup. O URL é atualizado depois do upload.
-            const waWin = window.open('', '_blank');
-            if (waWin) {
-                waWin.document.write(`<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>Enviando pedido…</title><style>
-                    *{box-sizing:border-box}
-                    body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
-                        font-family:-apple-system,Segoe UI,Roboto,sans-serif;
-                        background:linear-gradient(135deg,#7C3AED 0%,#4F46E5 100%);color:#fff;text-align:center;padding:20px}
-                    .card{max-width:420px}
-                    .spin{width:56px;height:56px;border:4px solid rgba(255,255,255,.25);border-top-color:#fff;border-radius:50%;
-                        margin:0 auto 24px;animation:s 1s linear infinite}
-                    @keyframes s{to{transform:rotate(360deg)}}
-                    h1{font-size:22px;margin:0 0 10px;font-weight:600}
-                    p{opacity:.9;margin:0;font-size:15px;line-height:1.5}
-                    </style></head><body><div class="card">
-                    <div class="spin"></div>
-                    <h1>Enviando seu pedido…</h1>
-                    <p>Estamos subindo o PDF para o Drive e preparando a mensagem do WhatsApp. Aguarde um instante.</p>
-                    </div></body></html>`);
-                waWin.document.close();
-            }
-
             let pdfUrl = null;
             if (DRIVE_UPLOAD_URL) {
                 try {
@@ -602,23 +590,20 @@
                 }
             }
 
-            try {
-                if (!pdfUrl) doc.save(filename);
-                const texto = resumoWA(d, pdfUrl);
-                const waUrl = `https://wa.me/${WA_NUM}?text=${encodeURIComponent(texto)}`;
-                if (waWin) {
-                    waWin.location.href = waUrl;
-                } else {
-                    window.open(waUrl, '_blank');
-                }
-                if (pdfUrl) {
-                    showFeedback('PDF enviado e WhatsApp aberto com o link. Confira a mensagem e envie.', true);
-                } else {
-                    showFeedback('PDF baixado e WhatsApp aberto. Anexe o arquivo na conversa e envie.', true);
-                }
-            } finally {
-                btnEnv.textContent = btnLabelOriginal;
-                validar();
+            if (!pdfUrl) doc.save(filename);
+            const texto = resumoWA(d, pdfUrl);
+            const waUrl = `https://wa.me/${WA_NUM}?text=${encodeURIComponent(texto)}`;
+
+            // Em vez de window.open (bloqueado no mobile após operação async),
+            // transformamos o próprio botão num link direto para o WhatsApp.
+            // O próximo clique é um gesto direto do usuário → nunca é bloqueado.
+            btnEnv.disabled = false;
+            btnEnv.textContent = pdfUrl ? 'Abrir WhatsApp' : 'Abrir WhatsApp e anexar PDF';
+            btnEnv.dataset.waUrl = waUrl;
+            if (pdfUrl) {
+                showFeedback('Pronto! Toque em "Abrir WhatsApp" para enviar a mensagem com o link do PDF.', true);
+            } else {
+                showFeedback('PDF baixado. Toque em "Abrir WhatsApp" e anexe o arquivo na conversa.', true);
             }
         });
     });

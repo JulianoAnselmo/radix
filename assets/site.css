@@ -69,17 +69,18 @@ p{color:var(--g6)}
 .header-inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .header-inner>a:first-child{flex-shrink:0}
 @media(min-width:1024px){
-    .header-inner{justify-content:flex-start;gap:24px}
+    .header-inner{justify-content:flex-start;gap:16px}
     .nav{margin-left:auto}
 }
-@media(min-width:1280px){.header-inner{gap:32px}}
+@media(min-width:1280px){.header-inner{gap:20px}}
 .header-logo{flex-shrink:0}
 .header-logo{height:56px;width:auto;transition:height .3s var(--ease)}
 .header.scrolled .header-logo{height:44px}
-.nav{display:none;gap:32px}
+.nav{display:none;gap:20px}
 @media(min-width:1024px){.nav{display:flex}}
-@media(min-width:1280px){.nav{gap:36px}}
-.h-actions{display:none;align-items:center;gap:12px}
+@media(min-width:1280px){.nav{gap:24px}}
+@media(min-width:1440px){.nav{gap:32px}}
+.h-actions{display:none;align-items:center;gap:8px}
 @media(min-width:1024px){.h-actions{display:flex}}
 .nav a{font-size:.88rem;font-weight:600;color:var(--g6);transition:all .3s;position:relative}
 .nav a::after{content:'';position:absolute;bottom:-6px;left:50%;width:0;height:2.5px;background:var(--grad);border-radius:2px;transition:all .3s var(--ease);transform:translateX(-50%)}
@@ -89,7 +90,8 @@ p{color:var(--g6)}
 .nav a.active::after{width:100%}
 .h-cta{display:none}
 @media(min-width:1024px){.h-cta{display:inline-flex}}
-.h-cta.btn{padding:11px 24px;font-size:.85rem;white-space:nowrap}
+.h-cta.btn{padding:10px 18px;font-size:.85rem;white-space:nowrap}
+@media(min-width:1440px){.h-cta.btn{padding:11px 24px}}
 
 /* Destaque "Área do Dentista" no nav (mobile menu) */
 .nav a.nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:30px;background:rgba(124,58,237,.08);border:1.5px solid rgba(124,58,237,.25);color:var(--p7);font-weight:700}
@@ -100,17 +102,21 @@ p{color:var(--g6)}
 
 /* "Área do Dentista" no header (após Agendar, far-right) */
 /* Botões do header (outline + ícone) */
-.h-btn,.h-dentista{display:none;align-items:center;gap:7px;padding:10px 18px;border-radius:30px;background:rgba(124,58,237,.08);border:1.5px solid rgba(124,58,237,.3);color:var(--p7);font-family:'Plus Jakarta Sans',sans-serif;font-size:.85rem;font-weight:700;transition:all .25s var(--ease);white-space:nowrap}
+.h-btn,.h-dentista{display:none;align-items:center;gap:6px;padding:9px 14px;border-radius:30px;background:rgba(124,58,237,.08);border:1.5px solid rgba(124,58,237,.3);color:var(--p7);font-family:'Plus Jakarta Sans',sans-serif;font-size:.82rem;font-weight:700;transition:all .25s var(--ease);white-space:nowrap}
+@media(min-width:1440px){.h-btn,.h-dentista{gap:7px;padding:10px 18px;font-size:.85rem}}
 @media(min-width:1024px){.h-btn,.h-dentista{display:inline-flex}}
 .h-btn:hover,.h-dentista:hover{background:var(--p7);color:#fff;border-color:var(--p7);transform:translateY(-2px);box-shadow:0 4px 16px rgba(124,58,237,.3)}
 .h-btn.active,.h-dentista.active{background:var(--p7);color:#fff;border-color:var(--p7);box-shadow:0 4px 14px rgba(124,58,237,.25)}
 .h-btn svg,.h-dentista svg{width:16px;height:16px;flex-shrink:0}
-/* Variante icon-only: mostra só o ícone em telas médias, texto volta em 1280+ */
-.h-btn-icon{padding:10px;width:40px;height:40px;justify-content:center;gap:0}
+/* Variante icon-only: só ícone em telas < 1280px (muito apertadas); texto a partir de 1280px */
+.h-btn-icon{padding:9px;width:38px;height:38px;justify-content:center;gap:0}
 .h-btn-icon span{display:none}
 @media(min-width:1280px){
-    .h-btn-icon{width:auto;height:auto;padding:10px 18px;gap:7px}
+    .h-btn-icon{width:auto;height:auto;padding:9px 14px;gap:6px}
     .h-btn-icon span{display:inline}
+}
+@media(min-width:1440px){
+    .h-btn-icon{padding:10px 18px;gap:7px}
 }
 
 /* Hamburger */
@@ -713,7 +719,9 @@ p{color:var(--g6)}
 .pd-field{display:flex;flex-direction:column;gap:8px}
 .pd-field label{font-family:'Plus Jakarta Sans',sans-serif;font-size:.76rem;font-weight:700;color:var(--g7);text-transform:uppercase;letter-spacing:.6px}
 .pd-field label .pd-req{color:#dc2626;margin-left:2px}
-.pd-field input,.pd-field textarea{width:100%;padding:13px 15px;font-size:.96rem;font-family:'Inter',system-ui,sans-serif;color:var(--g7);background:#F9FAFB;border:1.5px solid #E5E7EB;border-radius:var(--r);transition:all .25s var(--ease);-webkit-appearance:none;appearance:none;resize:vertical}
+.pd-field input,.pd-field textarea{width:100%;padding:13px 15px;font-size:.96rem;font-family:'Inter',system-ui,sans-serif;color:var(--g7);background:#F9FAFB;border:1.5px solid #E5E7EB;border-radius:var(--r);transition:all .25s var(--ease);-webkit-appearance:none;appearance:none;resize:vertical;box-sizing:border-box}
+.pd-field input[type="date"]{min-height:48px;display:block}
+.pd-field input[type="date"]::-webkit-date-and-time-value{text-align:left;min-height:1.2em}
 .pd-field textarea{min-height:88px;line-height:1.55}
 .pd-field input:hover,.pd-field textarea:hover{border-color:#D1D5DB;background:#fff}
 .pd-field input:focus,.pd-field textarea:focus{outline:none;border-color:var(--p7);background:#fff;box-shadow:0 0 0 4px rgba(124,58,237,.12)}
@@ -818,10 +826,10 @@ p{color:var(--g6)}
 @media(max-width:420px){.pd-actions{margin:22px -14px -22px;padding:14px 14px}}
 .pd-actions-info{font-size:.85rem;color:var(--g5);line-height:1.45}
 .pd-actions-info strong{color:var(--p7)}
-.pd-actions-btns{display:flex;flex-wrap:wrap;gap:10px;width:100%}
-@media(min-width:640px){.pd-actions-btns{width:auto}}
-.pd-actions-btns .btn{flex:1 1 140px;justify-content:center;text-align:center}
-@media(min-width:640px){.pd-actions-btns .btn{flex:0 0 auto}}
+.pd-actions-btns{display:flex;flex-direction:column;gap:10px;width:100%}
+@media(min-width:640px){.pd-actions-btns{flex-direction:row;flex-wrap:wrap;width:auto}}
+.pd-actions-btns .btn{width:100%;justify-content:center;text-align:center;white-space:normal}
+@media(min-width:640px){.pd-actions-btns .btn{width:auto;flex:0 0 auto}}
 .pd-actions .btn{padding:14px 22px;font-size:.9rem}
 .pd-actions .btn:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
 .pd-actions .btn:disabled:hover{background:var(--p7);transform:none}

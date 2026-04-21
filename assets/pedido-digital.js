@@ -5,13 +5,21 @@
 (function () {
     'use strict';
 
-    const WA_NUM = '551632523233';
+    const WA_NUM = '5516996458804';
     const CLINICA = {
         nome: 'Rádix — Clínica de Radiologia Odontológica',
         endereco: 'Praça Dr. José Furiati, 184 — Centro — Taquaritinga/SP',
         fone: '(16) 3252-3233',
         horario: 'Seg a Sex: 08h–11h30 | 13h30–17h30'
     };
+
+    // Upload para o Drive via Google Apps Script (ver scripts/apps-script-upload-pedido.gs)
+    // Substituir DRIVE_UPLOAD_URL pelo URL real gerado no deploy do Web App.
+    // Enquanto DRIVE_UPLOAD_URL estiver vazio, o fluxo antigo (baixa local + anexo manual) é mantido.
+    const DRIVE_UPLOAD_URL = 'https://script.google.com/macros/s/AKfycbyf5rPY2eviT3JQTabHxauYzzpE0xm0ZaWqkA687zpWMKAe9yYFvCmVG125OD-JuCsN/exec';
+    const DRIVE_UPLOAD_TOKEN = '';
+    const DRIVE_UPLOAD_TIMEOUT_MS = 15000;
+    const DRIVE_SUBFOLDER_PREFIX = 'radix';
 
     /* ---------- Odontograma: definição dos dentes ---------- */
     // Cada linha: array com slots. null = gap central (espaço entre quadrantes).
@@ -414,14 +422,66 @@
     }
 
     /* ---------- Resumo WhatsApp ---------- */
-    function resumoWA(d) {
+    function resumoWA(d, pdfUrl) {
         const dr = d.solicitante.dentista || 'Dr.(a)';
-        const pac = d.paciente.nome ? ` para o paciente *${d.paciente.nome}*` : '';
-        return [
-            `Olá! Segue pedido de exames da *${dr}*${pac}.`,
-            '',
-            '📎 O PDF do pedido está em anexo nesta conversa.'
-        ].join('\n');
+        const pac = d.paciente.nome || '';
+        const data = new Date().toLocaleDateString('pt-BR');
+        const linhas = [
+            '🦷 *Rádix — Solicitação de exame*',
+            ''
+        ];
+        if (pac) linhas.push(`👤 Paciente: *${pac}*`);
+        linhas.push(`🩺 Solicitante: Dr.(a) ${dr}`);
+        linhas.push(`📅 Data: ${data}`);
+        linhas.push('');
+        if (pdfUrl) {
+            linhas.push(`📄 PDF: ${pdfUrl}`);
+        } else {
+            linhas.push('📎 PDF em anexo nesta conversa.');
+        }
+        return linhas.join('\n');
+    }
+
+    /* ---------- Upload para o Drive (via Apps Script) ---------- */
+    function blobToBase64(blob) {
+        return new Promise((resolve, reject) => {
+            const fr = new FileReader();
+            fr.onload = () => {
+                const s = String(fr.result);
+                const idx = s.indexOf(',');
+                resolve(idx >= 0 ? s.slice(idx + 1) : s);
+            };
+            fr.onerror = reject;
+            fr.readAsDataURL(blob);
+        });
+    }
+
+    function currentYearMonth() {
+        const now = new Date();
+        return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
+    }
+
+    async function uploadPdfToDrive(pdfBlob, filename) {
+        if (!DRIVE_UPLOAD_URL) throw new Error('DRIVE_UPLOAD_URL não configurado');
+        const base64 = await blobToBase64(pdfBlob);
+        const subfolder = `${DRIVE_SUBFOLDER_PREFIX}/${currentYearMonth()}`;
+        const controller = new AbortController();
+        const timer = setTimeout(() => controller.abort(), DRIVE_UPLOAD_TIMEOUT_MS);
+        try {
+            const res = await fetch(DRIVE_UPLOAD_URL, {
+                method: 'POST',
+                // text/plain evita preflight CORS; Apps Script aceita o body bruto.
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                body: JSON.stringify({ filename, base64, subfolder, token: DRIVE_UPLOAD_TOKEN }),
+                signal: controller.signal
+            });
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            const data = await res.json();
+            if (!data || !data.ok || !data.url) throw new Error(data && data.error ? data.error : 'Resposta inválida');
+            return data.url;
+        } finally {
+            clearTimeout(timer);
+        }
     }
 
     function slugify(s) {
@@ -488,21 +548,77 @@
             }
         });
 
-        // Envio: gera PDF, baixa, abre WhatsApp
+        // Envio: gera PDF, tenta subir no Drive, abre WhatsApp com link.
+        // Se o upload falhar, cai no fluxo antigo (baixa local + WhatsApp sem link).
         btnEnv.addEventListener('click', async () => {
             if (btnEnv.disabled) return;
             await loadLogo();
             const d = collect(stateIntra, stateTomo);
+            let doc;
             try {
-                const doc = gerarPDF(d);
-                doc.save(nomeArquivo(d));
-                const texto = resumoWA(d);
-                const url = `https://wa.me/${WA_NUM}?text=${encodeURIComponent(texto)}`;
-                window.open(url, '_blank');
-                showFeedback('PDF baixado e WhatsApp aberto. Anexe o arquivo na conversa e envie.', true);
+                doc = gerarPDF(d);
             } catch (err) {
                 console.error(err);
                 showFeedback('Erro ao gerar o PDF. Tente novamente ou entre em contato pelo telefone.', false);
+                return;
+            }
+
+            const filename = nomeArquivo(d);
+            const pdfBlob = doc.output('blob');
+
+            const btnLabelOriginal = btnEnv.textContent;
+            btnEnv.disabled = true;
+            btnEnv.textContent = 'Enviando...';
+
+            // Abre a janela de forma síncrona (dentro do evento de clique) para
+            // evitar bloqueio de popup. O URL é atualizado depois do upload.
+            const waWin = window.open('', '_blank');
+            if (waWin) {
+                waWin.document.write(`<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>Enviando pedido…</title><style>
+                    *{box-sizing:border-box}
+                    body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
+                        font-family:-apple-system,Segoe UI,Roboto,sans-serif;
+                        background:linear-gradient(135deg,#7C3AED 0%,#4F46E5 100%);color:#fff;text-align:center;padding:20px}
+                    .card{max-width:420px}
+                    .spin{width:56px;height:56px;border:4px solid rgba(255,255,255,.25);border-top-color:#fff;border-radius:50%;
+                        margin:0 auto 24px;animation:s 1s linear infinite}
+                    @keyframes s{to{transform:rotate(360deg)}}
+                    h1{font-size:22px;margin:0 0 10px;font-weight:600}
+                    p{opacity:.9;margin:0;font-size:15px;line-height:1.5}
+                    </style></head><body><div class="card">
+                    <div class="spin"></div>
+                    <h1>Enviando seu pedido…</h1>
+                    <p>Estamos subindo o PDF para o Drive e preparando a mensagem do WhatsApp. Aguarde um instante.</p>
+                    </div></body></html>`);
+                waWin.document.close();
+            }
+
+            let pdfUrl = null;
+            if (DRIVE_UPLOAD_URL) {
+                try {
+                    pdfUrl = await uploadPdfToDrive(pdfBlob, filename);
+                } catch (err) {
+                    console.warn('Upload para o Drive falhou, usando fluxo manual:', err);
+                }
+            }
+
+            try {
+                if (!pdfUrl) doc.save(filename);
+                const texto = resumoWA(d, pdfUrl);
+                const waUrl = `https://wa.me/${WA_NUM}?text=${encodeURIComponent(texto)}`;
+                if (waWin) {
+                    waWin.location.href = waUrl;
+                } else {
+                    window.open(waUrl, '_blank');
+                }
+                if (pdfUrl) {
+                    showFeedback('PDF enviado e WhatsApp aberto com o link. Confira a mensagem e envie.', true);
+                } else {
+                    showFeedback('PDF baixado e WhatsApp aberto. Anexe o arquivo na conversa e envie.', true);
+                }
+            } finally {
+                btnEnv.textContent = btnLabelOriginal;
+                validar();
             }
         });
     });
